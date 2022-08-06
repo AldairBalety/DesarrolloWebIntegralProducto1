@@ -1,5 +1,5 @@
 <?php
-	//http://localhost/producto1/index.php?ancho=900&alto=300&um=20
+	//http://localhost/producto1/index.php?ancho=900&alto=300&um=15
 	header("Content-type: image/png");
 	require_once("Punto.php");
 	require_once("Vista.php");

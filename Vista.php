@@ -13,7 +13,7 @@
 			$this->verdeclaro = imagecolorallocate($this->img, 196, 237, 220);
 			$this->verde = imagecolorallocate($this->img, 0, 128, 0);
 			$this->rojo = imagecolorallocate($this->img, 200, 0, 0);
-			$this->amarillo = imagecolorallocate($this->img, 255, 255, 0);
+			$this->amarillo = imagecolorallocate($this->img, 255, 210, 0);
 			$this->azul = imagecolorallocate($this->img, 0, 0, 255);
 			imagefilledrectangle($this->img, 0, 0, $this->ancho, $this->alto, $this->blanco);
 		}
@@ -37,28 +37,50 @@
 		}
 		public function dibujarFlechaAbajo($p, $d){
 			imageline($this->img, $p->x, $p->y, $p->x, $p->y+$d, $this->rojo);
-			imageline($this->img, $p->x, $p->y+$d, $p->x-5, $p->y+$d-5, $this->rojo);
-			imageline($this->img, $p->x, $p->y+$d, $p->x+5, $p->y+$d-5, $this->rojo);
+			$valores = array(
+				$p->x,  $p->y+$d,
+				$p->x-5, $p->y+$d-5,
+				$p->x+5, $p->y+$d-5,
+				);
+			imagefilledpolygon($this->img, $valores, 3, $this->rojo);
 		}
 		public function dibujarFlechaDerecha($p, $d){
 			imageline($this->img, $p->x, $p->y, $p->x+$d, $p->y, $this->rojo);
 			imageline($this->img, $p->x+$d, $p->y, $p->x-5+$d, $p->y-5, $this->rojo);
 			imageline($this->img, $p->x+$d, $p->y, $p->x-5+$d, $p->y+5, $this->rojo);
+			$valores = array(
+				$p->x+$d,  $p->y,
+				$p->x-5+$d, $p->y-5,
+				$p->x-5+$d, $p->y+5,
+				);
+			imagefilledpolygon($this->img, $valores, 3, $this->rojo);
 		}
 		public function dibujarFlechaIzquierda($p, $d){
 			imageline($this->img, $p->x, $p->y, $p->x-$d, $p->y, $this->rojo);
-			imageline($this->img, $p->x-$d, $p->y, $p->x+5-$d, $p->y+5, $this->rojo);
-			imageline($this->img, $p->x-$d, $p->y, $p->x+5-$d, $p->y-5, $this->rojo);
+			$valores = array(
+				$p->x-$d,  $p->y,
+				$p->x+5-$d, $p->y+5,
+				$p->x+5-$d, $p->y-5,
+			);
+			imagefilledpolygon($this->img, $valores, 3, $this->rojo);
 		}
 		public function dibujarFlechaSalida($p, $d){
 			imageline($this->img, $p->x, $p->y+$d, $p->x+$d, $p->y, $this->verde);
-			imageline($this->img, $p->x+$d, $p->y, $p->x+$d, $p->y+9, $this->verde);
-			imageline($this->img, $p->x+$d, $p->y, $p->x+5, $p->y, $this->verde);
+			$valores = array(
+				$p->x+$d, $p->y,
+				$p->x+$d-7, $p->y,
+				$p->x+$d, $p->y+7,
+			);
+			imagefilledpolygon($this->img, $valores, 3, $this->verde);
 		}
 		public function dibujarFlechaEntrada($p, $d){
 			imageline($this->img, $p->x, $p->y+$d, $p->x+$d, $p->y, $this->verde);
-			imageline($this->img, $p->x, $p->y+$d, $p->x+10, $p->y+$d, $this->verde);
-			imageline($this->img, $p->x, $p->y+$d, $p->x, $p->y+10, $this->verde);
+			$valores = array(
+				$p->x, $p->y+$d,
+				$p->x, $p->y+$d-7,
+				$p->x+7, $p->y+$d,
+			);
+			imagefilledpolygon($this->img, $valores, 3, $this->verde);
 		}
 		public function dibujarLineaDerecha($p, $d){
 			imageline($this->img, $p->x, $p->y, $p->x-$d, $p->y, $this->rojo);
