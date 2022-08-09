@@ -28,7 +28,7 @@
 			$vista->dibujarRombo2(new Punto(540, 80), 30);
 			$vista->dibujarTitulo(new Punto(530, 95), 'i<=n');
 			$vista->dibujarLetra(new Punto(542, 120), 'F');
-			$vista->dibujarLineaAbajo(new Punto(540, 120), 35);
+			$vista->dibujarLineaAbajo(new Punto(540, 120), 35); 
 			$vista->dibujarFlechaIzquierda(new Punto(540, 155), 190);
 			$vista->dibujarLetra(new Punto(605, 92), 'V');
 			$vista->dibujarFlechaDerecha(new Punto(590, 105), 30);
